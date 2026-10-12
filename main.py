@@ -8,10 +8,15 @@ def search_notes(keyword):
 
         for number,line in enumerate(content.splitlines(),start = 1):
             if keyword.lower() in line.lower():
-                results.append(f"{file_path.name},第{number}行:{line}")
+                note1 = {
+			"file":file_path.name,
+			"line":number,
+			"content":line
+                        }
+                results.append(note1)
     return results
-result1 = search_notes("Python")
-result2 = search_notes("Java")
+#result1 = search_notes("Python")
+#result2 = search_notes("Java")
 
 #print("第一次搜索：",result1)
 #print(f"第二次搜索：{result2}")
@@ -22,7 +27,7 @@ if results:
     print("找到以下内容：")
 
     for item in results:
-        print(item)
+        print(f"{item['file']} 第{item['line']}行:{item['content']}")
 
 else:
     print("没有找到相关内容")
