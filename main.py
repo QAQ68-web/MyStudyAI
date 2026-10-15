@@ -27,10 +27,15 @@ def search_notes(question):
 			"得分":times
                         }
                 results.append(note1)
+    results = sorted(
+        results,
+        key = lambda item: item["得分"],
+        reverse = True
+        )
+
     return results
 
 word = input("请输入问题:")
-
 results = search_notes(word)
 
 if results:
